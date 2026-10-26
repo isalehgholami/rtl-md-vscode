@@ -31,6 +31,16 @@ npx @vscode/vsce package
 code --install-extension rtl-md-vscode-0.1.0.vsix
 ```
 
+## توسعه و تست
+
+پروژه را در VS Code باز کن و برای تست از **Run Without Debugging** (`Ctrl+F5`) استفاده کن. یا از ترمینال:
+
+```bash
+code --new-window --disable-extensions --extensionDevelopmentPath=. نمونه.md
+```
+
+با `F5` (همراه دیباگر) ممکن است پنجره‌ی تست بعد از ریلود کرش کند. این مشکل از دیباگر نود است، نه از اکستنشن. بعد از هر تغییر در کد، پنجره‌ی تست را ببند و دوباره اجرا کن.
+
 ## نکته‌ها
 
 - فونت از CDN جیدلیور لود می‌شود. بدون اینترنت، فونت پیش‌فرض VS Code استفاده می‌شود و بقیه‌چیز مثل قبل کار می‌کند.
