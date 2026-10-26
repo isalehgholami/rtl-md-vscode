@@ -1,0 +1,80 @@
+/* RTL Markdown Preview — injected into VS Code's built-in Markdown preview. */
+@import url('https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.css');
+
+:root {
+	--rtl-md-font: 'Vazirmatn', var(--vscode-markdown-font-family, system-ui), sans-serif;
+	--rtl-md-accent: #2f6fdb;
+	--rtl-md-th-bg: #2c5aa0;
+	--rtl-md-th-fg: #ffffff;
+	--rtl-md-border: rgba(128, 128, 128, .28);
+	--rtl-md-stripe: rgba(128, 128, 128, .07);
+	--rtl-md-quote: rgba(47, 111, 219, .09);
+}
+.vscode-dark {
+	--rtl-md-accent: #5b9dff;
+	--rtl-md-th-bg: #1e3a66;
+	--rtl-md-th-fg: #eaf2ff;
+	--rtl-md-quote: rgba(91, 157, 255, .1);
+}
+
+body {
+	font-family: var(--rtl-md-font);
+	line-height: 1.95;
+}
+body :is(h1, h2, h3, h4, h5, h6, p, li, td, th, blockquote) { font-family: var(--rtl-md-font); }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.5; font-weight: 800; }
+h1, h2 { border-bottom-color: var(--rtl-md-border); }
+
+/* Direction-aware spacing instead of left/right */
+ul, ol { padding-inline-start: 1.8em; }
+li::marker { color: var(--rtl-md-accent); }
+
+blockquote {
+	margin-inline: 0;
+	padding: .4em 1.1em;
+	border: 0;
+	border-inline-start: 4px solid var(--rtl-md-accent);
+	border-radius: 4px 10px 10px 4px;
+	background: var(--rtl-md-quote);
+}
+blockquote[dir="rtl"] { border-radius: 10px 4px 4px 10px; }
+
+a { text-decoration: none; border-bottom: 1px solid var(--rtl-md-border); }
+a:hover { text-decoration: none; border-bottom-color: currentColor; }
+
+/* Code is always left-to-right */
+pre, code, pre code {
+	direction: ltr;
+	unicode-bidi: isolate;
+}
+pre { text-align: left; }
+
+/* Tables */
+.rtl-md-table {
+	max-width: 100%;
+	overflow-x: auto;
+	margin: 1em 0;
+	border: 1px solid var(--rtl-md-border);
+	border-radius: 10px;
+}
+.rtl-md-table table { width: 100%; margin: 0; border-collapse: collapse; }
+.rtl-md-table th, .rtl-md-table td {
+	min-width: 7em;
+	padding: 9px 14px;
+	text-align: start;
+	border: 0;
+	border-bottom: 1px solid var(--rtl-md-border);
+}
+.rtl-md-table th {
+	white-space: nowrap;
+	font-weight: 700;
+	color: var(--rtl-md-th-fg);
+	background: var(--rtl-md-th-bg);
+	border-bottom: 0;
+}
+.rtl-md-table th + th { border-inline-start: 1px solid rgba(255, 255, 255, .14); }
+.rtl-md-table tbody tr:last-child td { border-bottom: 0; }
+.rtl-md-table tbody tr:nth-child(even) { background: var(--rtl-md-stripe); }
+
+img { max-width: 100%; }

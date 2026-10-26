@@ -1,0 +1,46 @@
+{
+  "name": "rtl-md-vscode",
+  "displayName": "RTL Markdown Preview",
+  "description": "پیش‌نمایش راست‌به‌چپ مارک‌داون در VS Code با فونت وزیرمتن و جدول‌های واکنش‌گرا",
+  "version": "0.1.0",
+  "publisher": "isalehgholami",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isalehgholami/rtl-md-vscode.git"
+  },
+  "homepage": "https://github.com/isalehgholami/rtl-md-vscode",
+  "bugs": "https://github.com/isalehgholami/rtl-md-vscode/issues",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Other"],
+  "keywords": ["markdown", "rtl", "persian", "farsi", "arabic", "hebrew", "preview", "فارسی"],
+  "activationEvents": ["onLanguage:markdown"],
+  "main": "./extension.js",
+  "contributes": {
+    "markdown.markdownItPlugins": true,
+    "markdown.previewStyles": ["./media/preview.css"],
+    "commands": [
+      {
+        "command": "rtlMd.toggleDirection",
+        "title": "RTL Markdown: تغییر جهت پیش‌نمایش (خودکار / RTL / LTR)"
+      }
+    ],
+    "configuration": {
+      "title": "RTL Markdown Preview",
+      "properties": {
+        "rtlMd.direction": {
+          "type": "string",
+          "enum": ["auto", "rtl", "ltr"],
+          "default": "auto",
+          "enumDescriptions": [
+            "جهت هر بلوک (پاراگراف، لیست، جدول…) از روی اولین حرف آن تشخیص داده می‌شود",
+            "همه‌ی بلوک‌ها راست‌به‌چپ",
+            "همه‌ی بلوک‌ها چپ‌به‌راست"
+          ],
+          "description": "جهت متن در پیش‌نمایش مارک‌داون. کد همیشه چپ‌به‌راست می‌ماند."
+        }
+      }
+    }
+  }
+}
