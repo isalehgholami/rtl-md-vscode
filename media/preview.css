@@ -28,30 +28,18 @@ body :is(h1, h2, h3, h4, h5, h6, p, li, td, th, blockquote) { font-family: var(-
 html, body {
 	direction: rtl !important;
 }
-body :is(p, h1, h2, h3, h4, h5, h6, ul, ol, li, blockquote, table, th, td) {
-	text-align: start;
+/* VS Code's own styles can pin text to the left; follow the block direction instead. */
+body :is(p, h1, h2, h3, h4, h5, h6, ul, ol, li, blockquote, table, th, td, div) {
+	text-align: start !important;
 }
+body pre, body pre code { text-align: left !important; }
 [dir="ltr"] { direction: ltr !important; }
 [dir="auto"] { unicode-bidi: isolate; }
-
-/* TEMP DEBUG: remove once direction works. Banner = this file loaded; red bar = plugin set a dir. */
-body::before {
-	content: "rtl-md css loaded";
-	display: block;
-	direction: ltr;
-	margin-bottom: .5em;
-	padding: 2px 8px;
-	font: 12px monospace;
-	color: #fff;
-	background: #d33;
-}
-[data-line][dir] { box-shadow: inset -3px 0 0 #2a2; }
-
 h1, h2, h3, h4, h5, h6 { line-height: 1.5; font-weight: 800; }
 h1, h2 { border-bottom-color: var(--rtl-md-border); }
 
 /* Direction-aware spacing instead of left/right */
-ul, ol { padding-inline-start: 1.8em; }
+body :is(ul, ol) { padding-inline: 1.8em 0 !important; margin-inline: 0 !important; }
 li::marker { color: var(--rtl-md-accent); }
 
 blockquote {
