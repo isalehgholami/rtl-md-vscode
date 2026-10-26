@@ -20,7 +20,6 @@
   "contributes": {
     "markdown.markdownItPlugins": true,
     "markdown.previewStyles": ["./media/preview.css"],
-    "markdown.previewScripts": ["./media/preview.js"],
     "commands": [
       {
         "command": "rtlMd.toggleDirection",
