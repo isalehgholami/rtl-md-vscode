@@ -23,11 +23,14 @@ body {
 }
 body :is(h1, h2, h3, h4, h5, h6, p, li, td, th, blockquote) { font-family: var(--rtl-md-font); }
 
-/* Fallback when a block has no `dir` attribute: detect direction per block from its first letter. */
-:is(p, h1, h2, h3, h4, h5, h6, ul, ol, li, blockquote, table):not([dir]) {
-	unicode-bidi: plaintext;
+/* Default is right-to-left. The markdown-it plugin overrides this per block
+   (dir="auto" / "ltr") when it is active, so mixed documents still work. */
+body {
+	direction: rtl;
 	text-align: start;
 }
+[dir="ltr"] { direction: ltr; }
+[dir="auto"] { unicode-bidi: isolate; }
 
 h1, h2, h3, h4, h5, h6 { line-height: 1.5; font-weight: 800; }
 h1, h2 { border-bottom-color: var(--rtl-md-border); }
