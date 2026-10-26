@@ -32,8 +32,9 @@ html, body {
 body :is(p, h1, h2, h3, h4, h5, h6, ul, ol, li, blockquote, table, th, td, div) {
 	text-align: start !important;
 }
-body pre, body pre code { text-align: left !important; }
-[dir="ltr"] { direction: ltr !important; }
+body pre, body pre code { direction: ltr !important; text-align: left !important; }
+[dir="rtl"] { direction: rtl !important; text-align: right !important; }
+[dir="ltr"] { direction: ltr !important; text-align: left !important; }
 [dir="auto"] { unicode-bidi: isolate; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.5; font-weight: 800; }
 h1, h2 { border-bottom-color: var(--rtl-md-border); }
