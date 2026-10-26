@@ -44,8 +44,25 @@ function extendMarkdownIt(md) {
 				dir = detectDirection(text);
 			}
 			token.attrSet('dir', dir);
+			token.meta = Object.assign(token.meta || {}, { rtlMdDir: dir });
 		}
 	});
+
+	// Other plugins (or VS Code itself) may add their own `dir` after our rule runs,
+	// which can leave an invalid value like "rtl auto". Decide the final value at
+	// render time so ours always wins.
+	if (typeof md.renderer.renderAttrs === 'function') {
+		const renderAttrs = md.renderer.renderAttrs.bind(md.renderer);
+		md.renderer.renderAttrs = (token) => {
+			const dir = token.meta && token.meta.rtlMdDir;
+			if (dir) {
+				const attr = (token.attrs || (token.attrs = [])).find((a) => a[0] === 'dir');
+				if (attr) attr[1] = dir;
+				else token.attrs.push(['dir', dir]);
+			}
+			return renderAttrs(token);
+		};
+	}
 
 	// Wrap tables so they scroll sideways instead of overflowing the preview.
 	const fallback = (tokens, idx, options, env, self) => self.renderToken(tokens, idx, options);
