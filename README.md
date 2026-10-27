@@ -30,12 +30,16 @@
 
 ## نصب
 
-هنوز در Marketplace منتشر نشده. برای نصب دستی، ریپو را بگیر و یک بسته‌ی `.vsix` بساز:
+1. آخرین فایل `.vsix` را از [صفحه‌ی Releases](https://github.com/isalehgholami/rtl-md-vscode/releases/latest) دانلود کن.
+2. در VS Code به بخش Extensions برو، روی `⋯` بالای لیست بزن و **Install from VSIX…** را انتخاب کن. یا از ترمینال:
 
 ```bash
-npx @vscode/vsce package
 code --install-extension rtl-md-vscode-0.1.0.vsix
 ```
+
+3. یک فایل `.md` باز کن و پیش‌نمایش را با `Ctrl+Shift+V` ببین.
+
+هنوز در Marketplace منتشر نشده. وقتی منتشر شد، با جستجوی «RTL Markdown Preview» در Extensions هم نصب می‌شود.
 
 ## توسعه و تست
 
